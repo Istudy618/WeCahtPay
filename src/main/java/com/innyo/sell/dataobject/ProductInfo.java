@@ -1,10 +1,17 @@
 package com.innyo.sell.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.innyo.sell.enums.ProductStatusEnum;
+import com.innyo.sell.utils.EnumUtils;
+import com.innyo.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @Author: XM
@@ -14,6 +21,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Data
+@DynamicUpdate
 public class ProductInfo {
      @Id
      private  String productId;
@@ -31,4 +39,10 @@ public class ProductInfo {
      private Integer productStatus;
      /** 类目编号.*/
      private  Integer categoryType;
+     /** 创建时间.*/
+     private Date createTime;
+
+     /** 修改时间.*/
+     private Date updateTime;
+
 }

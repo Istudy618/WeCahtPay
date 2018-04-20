@@ -1,10 +1,12 @@
 package com.innyo.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.innyo.sell.dataobject.OrderDetail;
 import com.innyo.sell.enums.OrderStatusEnum;
 import com.innyo.sell.enums.PayStatusEnum;
+import com.innyo.sell.utils.EnumUtils;
 import com.innyo.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -57,4 +59,14 @@ public class OrderDTO {
     private Date updateTime;
 
     List<OrderDetail> orderDetailList;
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtils.getByCode(orderStatus,OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtils.getByCode(payStatus,PayStatusEnum.class);
+    }
 }
