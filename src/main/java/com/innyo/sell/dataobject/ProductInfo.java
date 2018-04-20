@@ -36,7 +36,7 @@ public class ProductInfo {
      /** 小图.*/
      private  String productIcon;
      /** 状态,0正常 1下架.*/
-     private Integer productStatus;
+     private Integer productStatus = ProductStatusEnum.UP.getCode();
      /** 类目编号.*/
      private  Integer categoryType;
      /** 创建时间.*/
@@ -44,5 +44,10 @@ public class ProductInfo {
 
      /** 修改时间.*/
      private Date updateTime;
+
+     @JsonIgnore
+     public ProductStatusEnum getProductStatusEnum(){
+          return EnumUtils.getByCode(productStatus,ProductStatusEnum.class);
+     }
 
 }
