@@ -1,7 +1,8 @@
 spring:
-  datasource:    driver-class-name: com.mysql.jdbc.Driver
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 1234
+    password: 123456
     url: jdbc:mysql://192.168.6.159:3306/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
@@ -23,6 +24,8 @@ wechat:
   mchKey: c976503d34ca432c601361f969fd8d85
   keyPath: /var/weixin_cert/h5.p12
   notifyUrl: http://sall.natapp1.cc/sell/pay/notify
+  templateId:
+        orderStatus:
 
 projectUrl:
   wechatMpAuthorize: http://sall.natapp1.cc

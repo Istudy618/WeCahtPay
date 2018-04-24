@@ -75,4 +75,32 @@
             </div>
     </div>
     </body>
+<script>
+    var websocket = null;
+    if('WebSocket' in window){
+        websocket = new WebSocket('ws://sall/sell.natapp1.cc/sell/webSocket');
+    }else {
+        alert("该浏览器不支持websocket!");
+    }
+
+    websocket.onopen = function (ev) {
+        console.log("建立连接");
+    }
+
+    websocket.onclose=function (ev) {
+        console.log("连接关闭")
+    }
+
+    websocket.onmessage = function (ev) {
+        console.log("收到消息:"+ev.data)
+    }
+
+    websocket.onerror = function (ev) {
+        console.log("websocket通信发生错误!")
+    }
+
+    websocket.onbeforeunload = function () {
+        websocket.close();
+    }
+</script>
 </html>
